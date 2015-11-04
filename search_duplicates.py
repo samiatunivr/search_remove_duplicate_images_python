@@ -34,26 +34,23 @@ def remove_duplicate(path):
             # Join the two strings in order to form the full filepath.
             filepath = os.path.join(root, filename)
             if '.png' not in filepath:
-                continue
+               continue
             im = Image.open(filepath)
             hash_text = searchduplicate(im);
+            if hash_text in non_duplicate:
+                print '{0} duplicate(remove it)'.format(filepath)
             # check if it is already exist in the list
             if hash_text not in non_duplicate:
                 non_duplicate.append(hash_text)
                 clean_images.append(filepath)
-            if hash_text in non_duplicate:
-                print '{0} duplicate(remove it)'.format(filepath)
-
     return clean_images
 
-##########################################
 #                 main
 ##########################################
-path = ''
-
+path = '/home/samipc/'
 
 cl_data = remove_duplicate(path)
-#write to a file
+# write to a file
 fl = open(path + 'clean_images.txt', 'w')
 for filepath in cl_data:
     gs = filepath.encode('utf-8')
