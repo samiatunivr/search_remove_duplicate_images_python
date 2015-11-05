@@ -2,6 +2,7 @@ __author__ = 'samipc'
 from PIL import Image
 import os
 
+# part of this code is taken from the web
 
 def searchduplicate(image, has_size=8):
     image = image.convert('L').resize((has_size + 1, has_size), Image.ANTIALIAS, )
